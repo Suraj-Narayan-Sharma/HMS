@@ -14,7 +14,7 @@ class patient: public person {
 
      public:
      void getPatientInfo(){
-        cout<<"enter the data for person "<<endl;
+       cout<<"enter the data for person "<<endl;
        getpatientdata();
 
        cout<<"Disease details "<<endl;
@@ -29,7 +29,7 @@ class patient: public person {
         ofstream patientDatabase(patientFile, ios::binary | ios:: out | ios:: app);
          
          patientDatabase.write((char*)this, sizeof(patient));
-         cout<<"----patient data----"<<endl;
+         cout<<"-------------patient data---------------"<<endl;
          cout<<"patinet Id : "<<patienId<<endl;
          showpatientdata();
          Disease.showdiseaselist();
@@ -40,6 +40,7 @@ class patient: public person {
         while(!readdataformdatabase.eof()){
             if(readdataformdatabase.read((char*)this,sizeof(patient))){
                 showpatientdata();
+                cout<<"patient ID: "<<patienId<<endl;
             }
         }
      }

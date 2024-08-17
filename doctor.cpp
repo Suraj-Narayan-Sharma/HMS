@@ -29,9 +29,8 @@ class doctor : public person{
       }
       void showDoctorData(){
         cout<<"\n \t Details of doctors are : "<<endl;
-        showpatientdata();
-
         cout<<"Doctor Id is : "<<doctorid<<endl;
+        showpatientdata();
         Disease.showdiseaselist();
         available.displayavailable();
         cout<<endl;
@@ -46,8 +45,11 @@ class doctor : public person{
     void showDoctorDataFromFile(){
         ifstream readDataFromDatabase(doctorFile, ios:: binary | ios::in);
         while(!readDataFromDatabase.eof()){
-            if(readDataFromDatabase.read((char*)this, sizeof(doctor))){
+            if(readDataFromDatabase.read((char*)this, sizeof(doctor))){              
+                cout<<"\t\t Details of doctors"<<endl;
                 showpatientdata();
+                cout<<"Doctor Id is : "<<doctorid<<endl;
+                cout<<"<----------------------------------------------------------->"<<endl;
             }
         }
     }

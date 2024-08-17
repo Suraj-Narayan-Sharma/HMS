@@ -4,18 +4,16 @@ int main(){
     patient p1;
     doctor d1;   
      int choice;    
-     getch();
+     //getch();
      do{
-        cout<<" \n \n Enter optin 1 for patient "<<endl;
+        cout<<"\nEnter optin  1 for patient "<<endl;
         cout<<"Enter option 2 for doctor "<<endl;
-        cin>>choice;
-        
+        cin>>choice;        
         switch(choice){
-           
-           case 1 : cout<< " \n -------patient -------"<<endl;
+           case 1 : cout<< " \n ********** PATIENT **********"<<endl;
            p1.dopatientrelatework();
            break;
-           case 2 : cout<<"\n --------doctor ---------"<<endl;
+           case 2 : cout<<"\n ********** DOCTOR **********"<<endl;
            d1.doDoctorRelatedWork();
            break;
            default:

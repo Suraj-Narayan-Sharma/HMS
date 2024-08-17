@@ -15,8 +15,7 @@ class person{
         cin>>age;
         cout<<"enter address"<<endl;
         cin>>address;
-        cout<<
-        "enter email"<<endl;
+        cout<<"enter email"<<endl;
         cin>>email;
         cout<<"enter phoneNo"<<endl;
         cin>>phoneNo;

@@ -1,4 +1,3 @@
-
 #pragma once
 #include<iostream>
 #include<string.h>
@@ -10,7 +9,7 @@ class disease{
 
     public:
     void getdiseasedetail(){
-        cout<<"ener the name of disease : "<<endl;
+        cout<<"\n enter the name of disease : "<<endl;
         cin >>diseaseName;
         cout<<"enter the name of virus :"<<endl;
         cin>>virusname;
