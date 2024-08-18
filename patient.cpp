@@ -4,8 +4,10 @@
 #include<fstream>
 #include<cstring>
 using namespace std;
+
 class patient: public person {
      private:
+     int billamount = 0;
      int patienId;
      disease Disease;
      string appointDate;
@@ -29,12 +31,81 @@ class patient: public person {
         ofstream patientDatabase(patientFile, ios::binary | ios:: out | ios:: app);
          
          patientDatabase.write((char*)this, sizeof(patient));
-         cout<<"-------------patient data---------------"<<endl;
-         cout<<"patinet Id : "<<patienId<<endl;
-         showpatientdata();
-         Disease.showdiseaselist();
-         cout<<"appointment data : "<<appointDate;
+        //  cout<<"-------------patient data---------------"<<endl;
+        //  cout<<"patinet Id : "<<patienId<<endl;
+        //  showpatientdata();
+        //  Disease.showdiseaselist();
+        //  cout<<"appointment data : "<<appointDate;
      }
+      //add bill amount
+     void addpatientamount(){  
+         int id;
+        cout<<"Enter the id number of patient for billing ."<<endl;
+        cin>>id;       
+        ifstream ifpatinet;
+        ifpatinet.open(patientFile, ios::in | ios:: binary);
+        while(!ifpatinet.eof()){
+            ifpatinet.read((char*)this , sizeof(patient));
+           
+        }
+         if(patienId == id){
+              cout<<"Enter the  Bill amount"<<endl;
+              cin>>billamount;
+              ofstream patientDatabase(patientFile, ios::binary | ios:: out | ios:: app);
+              patientDatabase.write((char*)this, sizeof(patient));
+            }else{
+                cout<<"-------Record not found!!!!!!!-------"<<endl;
+                return ;
+            }
+        
+     }   
+
+    //to check bill amount
+    void checkbill(){
+        
+         int id;
+        cout<<"Enter the patientID for Bill amount checking ."<<endl;
+        cin>>id;       
+        ifstream ifpatinet;
+        ifpatinet.open(patientFile, ios::in | ios:: binary);
+        while(!ifpatinet.eof()){
+            ifpatinet.read((char*)this , sizeof(patient));
+           
+        }
+         if(patienId == id){
+             cout<<" Bill amount :"<<billamount<<endl;
+            }else{
+                cout<<"-------Record not found!!!!!!!-------"<<endl;
+                return ;
+            }
+    }
+    // to pay the bill amount 
+    void payment(){
+         int id,paidamount;
+        cout<<"Enter the patientID for pay Bill amount  ."<<endl;
+        cin>>id;       
+        ifstream ifpatinet;
+        ifpatinet.open(patientFile, ios::in | ios:: binary);
+        while(!ifpatinet.eof()){
+            ifpatinet.read((char*)this , sizeof(patient));
+           
+        }
+         if(patienId == id){
+            cout<<"enter the amount you want to pay : "<<endl;
+            cin>>paidamount;
+            cout<<" Unpaid Bill amount :"<<billamount<<endl;
+            billamount  = billamount - paidamount;
+            //code for upadating the billing section in the file            
+            ofstream patientDatabase(patientFile, ios::binary | ios:: out | ios:: app);
+            patientDatabase.write((char*)this, sizeof(patient));
+             cout<<" paid amount : "<<paidamount<<endl;
+             cout<<" after the paymet "<<endl;
+             cout<<" Unpaid Bill amount :"<<billamount<<endl;
+            }else{
+                cout<<"-------Record not found!!!!!!!-------"<<endl;
+                return ;
+            }
+    }
      void showpatientDataFromFile(){
         ifstream readdataformdatabase( patientFile, ios::binary | ios::in);
         while(!readdataformdatabase.eof()){
@@ -78,39 +149,46 @@ class patient: public person {
         }
 
      }
-     void editPatient(){
-        int n , pos, flag = 0;
-        cout<<"\n enter the ID of patient you want to edit "<<endl;
-        cin>>n; 
+     void editPatient() {
+    int n, pos, flag = 0;
+    cout << "\nEnter the ID of the patient you want to edit: " << endl;
+    cin >> n;
 
-        fstream fpatient ;
-        fpatient.open(patientFile, ios::binary | ios::in | ios::out);
-        while(!fpatient.eof()){
-            fpatient.read((char*)this , sizeof(patient));
-            if(fpatient){
-                if(n == patienId){
-                    flag = 1;
+    fstream fpatient;
+    fpatient.open(patientFile, ios::binary | ios::in | ios::out);  // ios::out instead of ios::app
 
-                    getPatientInfo();
-                    
-                    fpatient.seekp(pos);
-                
+    if (!fpatient) {
+        cout << "File could not be opened." << endl;
+        return;
+    }
+
+    while (!fpatient.eof()) {
+        pos = fpatient.tellg();  // Get the current position of the "get" pointer
+        fpatient.read((char*)this, sizeof(patient));
+        if (fpatient) {
+            if (n == patienId) {
+                flag = 1;
+
+                getPatientInfo();  // Modify the patient info
+
+                fpatient.seekp(pos);  // Move the "put" pointer to the correct position
                 fpatient.write((char*)this, sizeof(patient));
-                showpatientdata();
+
+                showpatientdata();  // Display the modified data
                 break;
-                }
             }
         }
-        fpatient.close();
-        if(flag = 1){
-            cout<<"Record is sucessfully modifiend "<<endl;
+    }
 
-        }
-        else{
-            cout<<" Record not found"<<endl;
-        }
+    fpatient.close();
 
-     }
+    if (flag == 1) {
+        cout << "Record is successfully modified." << endl;
+    } else {
+        cout << "Record not found." << endl;
+    }
+}
+
      void dopatientrelatework(){
         char flag;
         int choice;

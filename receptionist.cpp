@@ -6,7 +6,7 @@ int main(){
      int choice;    
      //getch();
      do{
-        cout<<"\nEnter optin  1 for patient "<<endl;
+        cout<<"\nEnter option  1 for patient "<<endl;
         cout<<"Enter option 2 for doctor "<<endl;
         cin>>choice;        
         switch(choice){
