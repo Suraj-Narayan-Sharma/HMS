@@ -2,7 +2,7 @@
 
 #include<iostream>
 using namespace std;
-class doctormain: public patient {
+class doctormain: virtual public patient {
     private :
     int choice ;
 

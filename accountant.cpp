@@ -3,7 +3,7 @@
 
 #include<iostream>
 using namespace std;
-class accountant: public patient{
+class accountant: virtual public patient{
    private:
    int ch;
 

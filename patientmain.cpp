@@ -3,7 +3,7 @@
 #include<iostream>
 using namespace std;
 // main funtion 
-class patientmain: public  patient{
+class patientmain: virtual public  patient{
     private:
     int ch;
      

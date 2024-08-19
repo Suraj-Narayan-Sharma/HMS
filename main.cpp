@@ -1,37 +1,35 @@
+#include "patientmain.cpp"
+#include "doctormain.cpp"
+#include "accountant.cpp"
 
-#pragma once
 #include<iostream>
-#include<conio.h>
 using namespace std;
-class person{
-    private:
-    int age;
-    char name[25], address[25], email[25], phoneNo[10];
-    public:
-    void getpatientdata(){
-        cout<<"enter name" <<endl;
-        cin>>name;
-        cout<<"enter age"<<endl;
-        cin>>age;
-        cout<<"enter address"<<endl;
-        cin>>address;
-        cout<<"enter email"<<endl;
-        cin>>email;
-        cout<<"enter phoneNo"<<endl;
-        cin>>phoneNo;
-    }
-    void showpatientdata(){
-        cout<<"<----------------------------------------------------------->"<<endl;
-        cout<<"Name : "<<name<<endl;
-        cout<<"age  : "<<age<<endl;
-        cout<<"address: "<<address<<endl;
-        cout<<"email : "<<email<<endl;
-        cout<<"phoneNO : "<<phoneNo<<endl;
-    }
-};
-// int main(){
-//      person p1;
-//      p1.getpatientdata();
-//      p1.showpatientdata();
-//     return 0;
-// }
+int main(){
+    patientmain p1;
+    doctormain d1;
+    accountant a1;
+    int choice;    
+     do{
+        cout<<"\nEnter option  1 for Admin* "<<endl;
+        cout<<"Enter option 2 for General_patient "<<endl;
+        cout<<"Enter option 3 for General_Doctor "<<endl;
+        cout<<"Enter option 4 for Accountant "<<endl;
+        cin>>choice;        
+        switch(choice){
+           case 1 : cout<< " \n ********** Admin* **********"<<endl;
+          // p1.dopatientrelatework();
+           break;
+           case 2 : cout<<" ********** General_patient **********"<<endl;
+           p1.generalpatient();
+           break;
+           case 3 : cout<<" ********** General_doctor **********"<<endl;
+           d1. generaldoctor();
+           break;
+           case 4: cout<<" ********** Accountant **********"<<endl;
+           a1.accoutant();
+           default:
+           break;
+        }
+     }while(choice == 1 | choice == 2 | choice == 3 | choice == 4);
+    return 0;
+}

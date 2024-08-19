@@ -1,4 +1,4 @@
-#include "main.cpp"
+#include "person.cpp"
 #include "disease.cpp"
 #include <iostream>
 #include<fstream>
@@ -188,7 +188,7 @@ class patient: public person {
         cout << "Record not found." << endl;
     }
 }
-
+//for doing patient related work
      void dopatientrelatework(){
         char flag;
         int choice;

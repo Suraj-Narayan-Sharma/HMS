@@ -11,8 +11,8 @@
 #include<istream>
 using namespace std;
 
-//class for option
-class admin: public patient, public doctor, public patientmain, public doctormain, public accountant{
+//class for option 
+class admin:  public doctor, public patientmain, public doctormain, public accountant{
    private: 
    int choice;
    
@@ -47,9 +47,11 @@ cin>>choice;
 }while (choice ==1 | choice ==2 | choice ==3);
 
 }
+//void  dopatientrelatework(){}
 
    //  funtion for everything access
    void everythingaccess(){
+      patient p;
     cout<<"\n\n"<<endl;
     cout<<"************ In this section you can save proper action of everysettings *****"<<endl;
      do{
@@ -58,7 +60,7 @@ cin>>choice;
         cin>>choice;        
         switch(choice){
            case 1 : cout<< " \n ********** PATIENT **********"<<endl;
-           dopatientrelatework();
+           p.dopatientrelatework();
            break;
            case 2 : cout<<"\n ********** DOCTOR **********"<<endl;
            doDoctorRelatedWork();
@@ -73,14 +75,15 @@ cin>>choice;
 int main(){
 
     int choice ;
-     //function for general option 
-    patientmain gen;
-    doctormain  doc;
-    accountant  acc;
+   //   //function for general option 
+   //  patientmain gen;
+   //  doctormain  doc;
+   //  accountant  acc;
  
-   //  funtion for everything access
-   patient p1;
-   doctor d1; 
+   // //  funtion for everything access
+   // patient p1;
+   // doctor d1; 
+   admin A;
 
    do{
 
@@ -90,10 +93,10 @@ int main(){
     switch (choice)
     {
     case 1 : cout<<"\n**********general access*********"<<endl;
-          
+          A.generalaccess();
         break;
     case 2 : cout<<"********* Everything access ***********"<<endl;
-
+          A.everythingaccess();
         break;
     
     default:

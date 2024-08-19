@@ -1,6 +1,6 @@
 #include "availableon.cpp"
 #include "disease.cpp"
-#include "main.cpp"
+#include "person.cpp"
 
 #include "iostream"
 #include <fstream>
