@@ -22,9 +22,3 @@ class disease{
 
     }
 };
-// int main(){
-//     disease d;
-//     d.getdiseasedetail();
-//     d.showdiseaselist();
-//     return 0;
-// }

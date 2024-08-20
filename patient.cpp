@@ -218,10 +218,90 @@ class patient: public person {
         }while(choice==1 | choice == 2 | choice == 3 | choice == 4);
      }
 };
+// patientmin bala
+class patientmain:  public  patient{
+    private:
+    int ch;
+     
+    public:
+    void generalpatient(){
+      do{
+        cout<<"\n Enter 1 for Patient new registration "<<endl;
+        cout<<" Enter 2 for Patient registered details"<<endl;
+        cin>>ch;
+        switch (ch)
+        {
+        case 1: cout<<"****** self register ******"<<endl;
+        addPatient();
+        break;
+        case 2: cout<<"****** self Details ******"<<endl;
+        showpatientDataFromFile();
+        break; 
+        default:
+        break;
+        }
+    }while(ch == 1 | ch == 2);
+    }
+};
 
+// doctor main bala 
+class doctormain:  public patient {
+    private :
+    int choice ;
 
-// int main(){
-//     patient p;
-//     p.dopatientrelatework();
-//     return 0;
-// }
+    public:
+    void generaldoctor(){
+    do{
+        cout<<"Enter option 1 for see the patient condtion"<<endl;
+        cout<<"Enter option 2 for Modify patient condition detail"<<endl;
+        cin>>choice;
+        switch (choice)
+        {
+        case 1: cout<<"*****Patient condition*****"<<endl;
+        showpatientDataFromFile();
+        break;
+        case 2: cout<<"*****Modify status*****"<<endl;
+        editPatient();
+        break; 
+        default:
+        break;
+        }
+    }while(choice == 1 | choice == 2);
+    }
+};
+
+// accountant bala 
+class accountant:  public patient{
+   private:
+   int ch;
+
+   public:
+   void accoutant(){
+      do{
+     cout<<"\n Enter the option 1 for add bill amount"<<endl;
+     cout<<" Enter the option 2 for check bill amount"<<endl;
+     cout<<" Enter the option 3 for payment "<<endl;
+     cin>>ch;
+     switch (ch)
+     {
+     case 1: cout<<"********* Add Bill *********"<<endl;
+        addpatientamount();
+        break;
+     case 2: cout<<"*******  Bill  Details *****"<<endl;
+      checkbill();
+        //pp2.showpatientDataFromFile();
+        break;
+     case 3: cout<<"********* Do payment *********"<<endl;
+        payment();
+        break;
+     default:
+        break;
+     }
+    }while(ch == 1 | ch == 2 | ch==3);
+   }
+};
+
+// portio of admin 
+class admin : patient{
+    
+};

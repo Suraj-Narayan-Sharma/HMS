@@ -29,9 +29,3 @@ class person{
         cout<<"phoneNO : "<<phoneNo<<endl;
     }
 };
-// int main(){
-//      person p1;
-//      p1.getpatientdata();
-//      p1.showpatientdata();
-//     return 0;
-// }
